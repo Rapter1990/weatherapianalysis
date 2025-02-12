@@ -1,0 +1,19 @@
+server:
+  port: 1100
+
+spring:
+  config:
+    import: optional:file:.env[.properties]
+  datasource:
+    url: jdbc:postgresql://${WEATHER_DB_IP:localhost}:${WEATHER_DB_PORT:5432}/weatherapianalysisdatabase
+    username: ${POSTGRES_USER:postgres}
+    password: ${POSTGRES_PASSWORD:111111}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  application:
+    name: weatherapianalysis
+
