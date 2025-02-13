@@ -17,3 +17,7 @@ spring:
   application:
     name: weatherapianalysis
 
+open-weather-api:
+  api-url: http://api.openweathermap.org/
+  api-key: ${OPEN_WEATHER_API_KEY:default-key}
+  api-call-limit: 60
