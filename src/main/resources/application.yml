@@ -20,4 +20,6 @@ spring:
 open-weather-api:
   api-url: http://api.openweathermap.org/
   api-key: ${OPEN_WEATHER_API_KEY:default-key}
+  air-pollution-url: ${open-weather-api.api-url}/data/2.5/air_pollution/history
+  geocode-url: ${open-weather-api.api-url}/geo/1.0/direct
   api-call-limit: 60
