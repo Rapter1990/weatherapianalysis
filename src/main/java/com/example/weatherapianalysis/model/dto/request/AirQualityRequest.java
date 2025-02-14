@@ -1,11 +1,12 @@
 package com.example.weatherapianalysis.model.dto.request;
 
+import com.example.weatherapianalysis.utils.CustomLocalDateTimeDeserializer;
 import com.example.weatherapianalysis.utils.annotation.ValidCity;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import jakarta.validation.constraints.NotBlank;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 
@@ -18,10 +19,10 @@ public class AirQualityRequest {
     @ValidCity
     private String city;
 
-    @DateTimeFormat(pattern = "dd-MM-yyyy", iso = DateTimeFormat.ISO.DATE_TIME)
+    @JsonDeserialize(using = CustomLocalDateTimeDeserializer.class)
     private LocalDateTime startDate;
 
-    @DateTimeFormat(pattern = "dd-MM-yyyy", iso = DateTimeFormat.ISO.DATE_TIME)
+    @JsonDeserialize(using = CustomLocalDateTimeDeserializer.class)
     private LocalDateTime endDate;
 
 }
