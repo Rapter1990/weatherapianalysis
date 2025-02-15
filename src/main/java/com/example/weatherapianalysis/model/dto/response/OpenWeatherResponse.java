@@ -1,13 +1,13 @@
 package com.example.weatherapianalysis.model.dto.response;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class OpenWeatherResponse {
     private Coord coord;
@@ -15,6 +15,8 @@ public class OpenWeatherResponse {
 
     @Getter
     @Setter
+    @NoArgsConstructor
+    @AllArgsConstructor
     @Builder
     public static class Coord {
         private double lat;
@@ -23,6 +25,8 @@ public class OpenWeatherResponse {
 
     @Getter
     @Setter
+    @NoArgsConstructor
+    @AllArgsConstructor
     @Builder
     public static class DataPoint {
         private long dt;
@@ -32,6 +36,8 @@ public class OpenWeatherResponse {
 
     @Getter
     @Setter
+    @NoArgsConstructor
+    @AllArgsConstructor
     @Builder
     public static class Main {
         private int aqi;
@@ -39,6 +45,8 @@ public class OpenWeatherResponse {
 
     @Getter
     @Setter
+    @NoArgsConstructor
+    @AllArgsConstructor
     @Builder
     public static class Components {
         private double co;
@@ -50,4 +58,5 @@ public class OpenWeatherResponse {
         private double pm10;
         private double nh3;
     }
+
 }
