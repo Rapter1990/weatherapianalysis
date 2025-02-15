@@ -23,3 +23,20 @@ open-weather-api:
   air-pollution-url: ${open-weather-api.api-url}/data/2.5/air_pollution/history
   geocode-url: ${open-weather-api.api-url}/geo/1.0/direct
   api-call-limit: 60
+
+resilience4j:
+  circuit breaker:
+    instances:
+      geocodeClient:  # Configuration for the circuit breaker instance for GeocodeClient
+        slidingWindowSize: 10  # Number of calls recorded before calculating failure rate
+        failureRateThreshold: 50  # Percentage of failed calls before opening the circuit breaker (50% failures)
+        waitDurationInOpenState: 10000  # Time (in milliseconds) the circuit stays open before switching to half-open state (10 seconds)
+        permittedNumberOfCallsInHalfOpenState: 5  # Number of test calls allowed when the circuit is in half-open state
+        automaticTransitionFromOpenToHalfOpenEnabled: true  # Automatically transition to half-open after wait duration
+
+      openWeatherClient:  # Configuration for the circuit breaker instance for OpenWeatherClient
+        slidingWindowSize: 10  # Number of requests stored in the sliding window before evaluating failure rate
+        failureRateThreshold: 50  # Circuit breaker will open when 50% of the calls fail
+        waitDurationInOpenState: 10000  # Circuit stays open for 10 seconds before transitioning to half-open
+        permittedNumberOfCallsInHalfOpenState: 5  # Allow 5 test calls in half-open state before deciding to close or reopen
+        automaticTransitionFromOpenToHalfOpenEnabled: true  # Enables automatic transition from open to half-open state
