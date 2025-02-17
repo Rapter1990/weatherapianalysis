@@ -35,6 +35,17 @@
 		<jacoco-version>0.8.12</jacoco-version>
 		<maven-surefire-plugin-version>3.5.2</maven-surefire-plugin-version>
 		<maven-failsafe-plugin-version>3.5.2</maven-failsafe-plugin-version>
+
+		<sonar.host.url>http://localhost:9000</sonar.host.url>  <!-- Changed to localhost if running locally -->
+		<sonar.login>sqp_a51c2dd9c8648b816faa5bc24684728f75ae13a0</sonar.login> <!-- Authentication Token -->
+		<sonar.projectKey>weatherapianalysis</sonar.projectKey>
+		<sonar.projectName>weatherapianalysis</sonar.projectName>
+		<sonar.projectVersion>1.0</sonar.projectVersion>
+		<sonar.sources>src/main</sonar.sources>
+		<sonar.tests>src/test</sonar.tests>
+		<sonar.sourceEncoding>UTF-8</sonar.sourceEncoding>
+		<sonar.java.binaries>target/classes</sonar.java.binaries>
+
 	</properties>
 	<dependencies>
 

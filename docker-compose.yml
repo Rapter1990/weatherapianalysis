@@ -49,6 +49,7 @@ services:
       - OPEN_WEATHER_API_KEY=${OPEN_WEATHER_API_KEY:-open_weather_api_default_key}
     depends_on:
       - postgres
+      - sonarqube
     networks:
       - weatherapianalysis_network
 
