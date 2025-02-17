@@ -36,6 +36,9 @@
 		<maven-surefire-plugin-version>3.5.2</maven-surefire-plugin-version>
 		<maven-failsafe-plugin-version>3.5.2</maven-failsafe-plugin-version>
 
+		<openapi.version>2.1.0</openapi.version>
+		<springdoc-openapi.version>2.1.0</springdoc-openapi.version>
+
 		<sonar.host.url>http://localhost:9000</sonar.host.url>  <!-- Changed to localhost if running locally -->
 		<sonar.login>sqp_a51c2dd9c8648b816faa5bc24684728f75ae13a0</sonar.login> <!-- Authentication Token -->
 		<sonar.projectKey>weatherapianalysis</sonar.projectKey>
@@ -129,6 +132,18 @@
 			<groupId>org.testcontainers</groupId>
 			<artifactId>junit-jupiter</artifactId>
 			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>${openapi.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>${springdoc-openapi.version}</version>
 		</dependency>
 
 	</dependencies>
