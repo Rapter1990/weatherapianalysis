@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sonarqube-config
+  namespace: default
+data:
+  SONAR_JDBC_URL: "jdbc:postgresql://postgres.default.svc.cluster.local:5432/weatherapianalysisdatabase"
+  SONAR_JDBC_USERNAME: "postgres"
+  SONAR_JDBC_PASSWORD: "111111"

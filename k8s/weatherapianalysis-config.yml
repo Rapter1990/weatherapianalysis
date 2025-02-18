@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: weatherapianalysis-config
+  namespace: default
+data:
+  WEATHER_DB_IP: "postgres.default.svc.cluster.local"
+  WEATHER_DB_PORT: "5432"
+  SERVER_PORT: "1100"
+  OPEN_WEATHER_API_KEY: "5c0597d5dbe880e9d4197a4aac59eb7c"

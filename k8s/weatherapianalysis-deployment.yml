@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: weatherapianalysis
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: weatherapianalysis
+  template:
+    metadata:
+      labels:
+        app: weatherapianalysis
+    spec:
+      containers:
+        - name: weatherapianalysis
+          image: noyandocker/weatherapianalysis:latest
+          ports:
+            - containerPort: 1100
+          envFrom:
+            - configMapRef:
+                name: weatherapianalysis-config # Fetch non-sensitive config variables
+          env:
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: POSTGRES_USER
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: POSTGRES_PASSWORD
+          volumeMounts:
+            - name: weatherapianalysis-logs
+              mountPath: /data/logs
+      volumes:
+        - name: weatherapianalysis-logs
+          emptyDir: {}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: weatherapianalysis-service
+  namespace: default
+spec:
+  selector:
+    app: weatherapianalysis
+  ports:
+    - protocol: TCP
+      port: 1100
+      targetPort: 1100
+  type: NodePort
