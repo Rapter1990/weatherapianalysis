@@ -40,3 +40,22 @@ resilience4j:
         waitDurationInOpenState: 10000  # Circuit stays open for 10 seconds before transitioning to half-open
         permittedNumberOfCallsInHalfOpenState: 5  # Allow 5 test calls in half-open state before deciding to close or reopen
         automaticTransitionFromOpenToHalfOpenEnabled: true  # Enables automatic transition from open to half-open state
+
+# SWAGGER
+springdoc:
+  api-docs:
+    enabled: true
+  show-actuator: true
+
+# Prometheus
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - "*"
+          - prometheus
+  prometheus:
+    metrics:
+      export:
+        enabled: true
