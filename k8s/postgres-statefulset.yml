@@ -35,6 +35,8 @@ spec:
                 configMapKeyRef:
                   name: postgres-config
                   key: POSTGRES_DB
+            - name: POSTGRES_INITDB_ARGS
+              value: "--auth-host=scram-sha-256"
           volumeMounts:
             - name: postgres-data
               mountPath: /var/lib/postgresql/data
