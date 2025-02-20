@@ -46,6 +46,7 @@ springdoc:
   api-docs:
     enabled: true
   show-actuator: true
+  override-with-generic-response: false
 
 # Prometheus
 management:
