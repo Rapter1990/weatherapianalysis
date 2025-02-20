@@ -247,6 +247,19 @@ https://hub.docker.com/repository/docker/noyandocker/jenkins-jenkins/general
 https://hub.docker.com/repository/docker/noyandocker/weatherapianalysis/general
 ```
 
+### Sonarqube
+
+- Go to `localhost:9000` for Docker and Go there through `minikube service sonarqube` for Kubernetes
+- Enter username and password as `admin`
+- Change password
+- Click `Create Local Project`
+- Choose the baseline for this code for the project as `Use the global setting`
+- Click `Locally` in Analyze Method
+- Define Token
+- Click `Continue`
+- Copy `sonar.host.url` and `sonar.token` (`sonar.login`) in the `properties` part in  `pom.xml`
+- Run `mvn sonar:sonar` to show code analysis
+
 ### Jenkins
 
 - Go to `jenkins` folder
