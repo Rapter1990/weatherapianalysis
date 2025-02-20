@@ -1,0 +1,126 @@
+{
+	"info": {
+		"_postman_id": "946f5c80-fb4d-4c8e-a7b1-567cabf41431",
+		"name": "Weather Analysis Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33002673"
+	},
+	"item": [
+		{
+			"name": "Get Air Quality throw Exception City Name should be valid",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"startDate\" : \"03-02-2025\",\r\n    \"endDate\" : \"09-02-2025\"\r\n} ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:1100/api/v1/airquality",
+					"host": [
+						"localhost"
+					],
+					"port": "1100",
+					"path": [
+						"api",
+						"v1",
+						"airquality"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Air Quality throw Exception City must be one of: London, Barcelona, Ankara, Tokyo, Mumbai",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"city\" : \"Paris\",\r\n    \"startDate\" : \"03-02-2025\",\r\n    \"endDate\" : \"09-02-2025\"\r\n} ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:1100/api/v1/airquality",
+					"host": [
+						"localhost"
+					],
+					"port": "1100",
+					"path": [
+						"api",
+						"v1",
+						"airquality"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Air Quality By City",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"city\" : \"Ankara\"\r\n} ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:1100/api/v1/airquality",
+					"host": [
+						"localhost"
+					],
+					"port": "1100",
+					"path": [
+						"api",
+						"v1",
+						"airquality"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Air Quality By City with Time Range",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"city\" : \"Ankara\",\r\n    \"startDate\" : \"07-02-2025\",\r\n    \"endDate\" : \"20-02-2025\"\r\n} ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:1100/api/v1/airquality",
+					"host": [
+						"localhost"
+					],
+					"port": "1100",
+					"path": [
+						"api",
+						"v1",
+						"airquality"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
