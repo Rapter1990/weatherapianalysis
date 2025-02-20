@@ -1,7 +1,7 @@
 # Case Study - Weather Api Analysis Api
 
 <p align="center">
-    <img src="screenshots/main_screenshot.png" alt="Main Information" width="800" height="700">
+    <img src="screenshots/main_screenshot.png" alt="Main Information" width="800" height="500">
 </p>
 
 ### 📖 Information
