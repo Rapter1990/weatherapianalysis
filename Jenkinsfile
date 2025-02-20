@@ -5,7 +5,7 @@ pipeline {
         GIT_REPO_URL = 'https://github.com/Rapter1990/weatherapianalysis.git'
         BRANCH_NAME = 'main'
         DOCKERHUB_USERNAME = 'noyandocker'
-        DOCKER_IMAGE_NAME = 'noyandocker/jenkins-jenkins'
+        DOCKER_IMAGE_NAME = 'jenkins-jenkins'
     }
 
     stages {
