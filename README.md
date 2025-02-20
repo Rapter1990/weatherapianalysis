@@ -7,26 +7,48 @@
 ### 📖 Information
 
 <ul style="list-style-type:disc">
-  <li>
-    This project provides a Spring Boot API for Air Quality Management, allowing users to fetch air quality data based on request parameters. The API supports logging for request tracking.
-  </li>
-  <li>
-    <b>Air Quality Management:</b>
-    <ul>
-      <li>
-        Retrieve real-time air quality data based on latitude, longitude, and date.
-      </li>
-    </ul>
-  </li>
-  <li>
-    <b>Logging:</b>
-    <ul>
-      <li>
-        <b>Custom Logging Aspect:</b> Logs details of REST controller method calls and
-        exceptions, including HTTP request and response details.
-      </li>
-    </ul>
-  </li>
+   <li> This project provides a **Spring Boot API** for **Air Quality Management**, allowing users to fetch **real-time and historical air quality data** based on request parameters. The API supports **logging** for request tracking and database integration. </li>
+   <li>
+      <b>Air Quality Management:</b> 
+      <ul>
+         <li> Retrieve **real-time air quality data** based on latitude, longitude, and date. </li>
+         <li> Retrieve **historical air pollution data** based on **city name** and **date range**. </li>
+         <li> <b>City Name is mandatory</b> in queries, while the **date range** is optional. If not provided, the system defaults to the **last 7 days**. </li>
+         <li> Only **London, Barcelona, Ankara, Tokyo, and Mumbai** are supported for historical data queries. </li>
+         <li> The API response includes **pollutant categories** (CO, SO2, O3, etc.), sorted **chronologically** in **JSON format**. </li>
+         <li> <b>Example Request:</b> <code>/api/v1/airquality/history?city=ankara&startDate=16-01-2025&endDate=17-01-2025</code> </li>
+         <li> <b>Example Response:</b> </li>
+         <pre> { "City": "Ankara", "Results": [ { "Date": "16-05-2025", "Categories": [ { "CO": "Satisfactory" }, { "SO2": "Moderate" }, { "O3": "Satisfactory" } ] }, { "Date": "17-05-2025", "Categories": [ { "CO": "Good" }, { "SO2": "Severe" }, { "O3": "Satisfactory" } ] } ] } </pre>
+      </ul>
+   </li>
+   <li>
+      <b>Database Integration:</b> 
+      <ul>
+         <li> Each query first checks the **database**. Only missing data will be fetched from the **external API**, and then stored in the database. </li>
+         <li> A log entry is created indicating whether data was retrieved from the **database** or from the **API**. </li>
+         <li>
+            <b>Example Workflow:</b> 
+            <ul>
+               <li><b>Query:</b> `Paris, 05-01-2025 to 10-01-2025` → Data is <b>not in the database</b>, so it is fetched from the **API** and stored.</li>
+               <li><b>Query:</b> `Ankara, 05-01-2025 to 10-01-2025` → Data is <b>not in the database</b>, so it is fetched from the **API** and stored.</li>
+               <li>
+                  <b>Query:</b> `Paris, 01-01-2025 to 15-01-2025` → 
+                  <ul>
+                     <li>01-01-2025 to 04-01-2025 → **Fetched from API** and stored.</li>
+                     <li>05-01-2025 to 10-01-2025 → **Fetched from the database**.</li>
+                     <li>11-01-2025 to 15-01-2025 → **Fetched from API** and stored.</li>
+                  </ul>
+               </li>
+            </ul>
+         </li>
+      </ul>
+   </li>
+   <li>
+      <b>Logging:</b> 
+      <ul>
+         <li> <b>Custom Logging Aspect:</b> Logs details of REST controller method calls for database Integration and exceptions. </li>
+      </ul>
+   </li>
 </ul>
 
 
